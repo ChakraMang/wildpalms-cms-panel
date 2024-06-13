@@ -3,22 +3,8 @@ import React from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {  Navigation, HashNavigation } from 'swiper/modules';
 
-//Images
-import gallery1 from "../../../../images/gallery/1.png";
-import gallery2 from "../../../../images/gallery/2.png";
-import gallery3 from "../../../../images/gallery/3.png";
-
-
-
-const sliderData = [
-  { image:gallery1},
-  { image:gallery2},
-  { image:gallery3},
-  { image:gallery2},
-  { image:gallery1},
-];
-
-const ImageGallery = () => {    
+const ImageGallery = ({pictures}) => {
+  console.log('pictures', pictures)
   return (
     <div className="image-gallery-container">
       <Swiper
@@ -49,10 +35,10 @@ const ImageGallery = () => {
         modules={[ Navigation, HashNavigation]}
         className="mySwiper"
       >
-        {sliderData.map((item, ind)=>(
+        {pictures?.map((item, ind)=>(
             <SwiperSlide data-hash="slide1" key={ind}>
                 <div className="items">
-                  <img src={item.image} alt="" className="d-block w-100"/>
+                  <img src={item} alt="" className="d-block w-100"/>
               </div>
             </SwiperSlide>                
           ))}

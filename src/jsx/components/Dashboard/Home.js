@@ -74,11 +74,11 @@ function Home() {
       <div className="form-head d-md-flex mb-sm-4 mb-3 align-items-start">
         <div className="me-auto  d-lg-block">
           <h2 className="text-black font-w600">Dashboard</h2>
-          <p className="mb-0">Welcome to Omah Property Admin</p>
+          <p className="mb-0">Welcome to Wildpalms Property Admin</p>
         </div>
         <Link to="/" className="btn btn-primary rounded light">
           Refresh
-        </Link>        
+        </Link>
       </div>
       <div className="row">
         <div className="col-xl-6 col-xxl-12">
@@ -88,7 +88,13 @@ function Home() {
                 <div className="card-body">
                   <div className="media d-sm-flex d-block align-items-center">
                     <span className="me-4 d-block mb-sm-0 mb-3">
-                      <svg width={80} height={80} viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <svg
+                        width={80}
+                        height={80}
+                        viewBox="0 0 80 80"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
                         <path
                           d="M31.8333 79.1667H4.16659C2.33325 79.1667 0.833252 77.6667 0.833252 75.8333V29.8333C0.833252 29 1.16659 28 1.83325 27.5L29.4999 1.66667C30.4999 0.833332 31.8333 0.499999 32.9999 0.999999C34.3333 1.66667 34.9999 2.83333 34.9999 4.16667V76C34.9999 77.6667 33.4999 79.1667 31.8333 79.1667ZM7.33325 72.6667H28.4999V11.6667L7.33325 31.3333V72.6667Z"
                           fill="white"
@@ -106,17 +112,18 @@ function Home() {
                     <div className="media-body mb-sm-0 mb-3 me-5">
                       <h4 className="fs-22 text-white">Total Properties</h4>
                       <div className="progress mt-3 mb-2" style={{ height: 8 }}>
-                        <div className="progress-bar bg-white progress-animated"
-                          style={{ width: "86%", height: 8 }}                          
+                        <div
+                          className="progress-bar bg-white progress-animated"
+                          style={{ width: "86%", height: 8 }}
                         >
                           <span className="sr-only">86% Complete</span>
                         </div>
                       </div>
                       <span className="fs-14">
-                        431 more to break last month record
+                        6 more to break last month record
                       </span>
                     </div>
-                    <span className="fs-35 font-w500">4,562</span>
+                    <span className="fs-35 font-w500">25</span>
                   </div>
                 </div>
               </div>
@@ -126,12 +133,18 @@ function Home() {
                 <div className="card-body">
                   <div className="media align-items-center">
                     <div className="media-body me-3">
-                      <h2 className="fs-28 text-black font-w600">2,356</h2>
-                      <p className="property-p mb-0 text-black font-w500">Properties for Sale</p>
+                      <h2 className="fs-28 text-black font-w600">5</h2>
+                      <p className="property-p mb-0 text-black font-w500">
+                        Land for Sale
+                      </p>
                       <span className="fs-13">Target 3k/month</span>
                     </div>
                     <div className="d-inline-block position-relative donut-chart-sale">
-                      <ChartDoughnut value={71} backgroundColor="#3C4CB8" backgroundColor2="rgba(236,236,236,1)"/>
+                      <ChartDoughnut
+                        value={71}
+                        backgroundColor="#3C4CB8"
+                        backgroundColor2="rgba(236,236,236,1)"
+                      />
                       <small className="text-primary">71%</small>
                       <span className="circle bgl-primary" />
                     </div>
@@ -144,14 +157,18 @@ function Home() {
                 <div className="card-body">
                   <div className="media align-items-center">
                     <div className="media-body me-3">
-                      <h2 className="fs-28 text-black font-w600">2,206</h2>
+                      <h2 className="fs-28 text-black font-w600">25</h2>
                       <p className="property-p mb-0 text-black font-w500">
                         Properties for Rent
                       </p>
                       <span className="fs-13">Target 3k/month</span>
                     </div>
                     <div className="d-inline-block position-relative donut-chart-sale">
-                      <ChartDoughnut value={90} backgroundColor="#37D15A" backgroundColor2="rgba(236,236,236,1)" />
+                      <ChartDoughnut
+                        value={90}
+                        backgroundColor="#37D15A"
+                        backgroundColor2="rgba(236,236,236,1)"
+                      />
                       <small className="text-success">90%</small>
                       <span className="circle bgl-success" />
                     </div>
@@ -166,9 +183,7 @@ function Home() {
             <div className="card-header border-0 pb-0">
               <h3 className="fs-18 text-black">Total Revenue</h3>
               <Dropdown className="dropdown ms-auto">
-                <Dropdown.Toggle className="btn-link   i-false p-0"                 
-                  variant=""
-                >
+                <Dropdown.Toggle className="btn-link   i-false p-0" variant="">
                   <svg
                     width="24px"
                     height="24px"
@@ -201,10 +216,10 @@ function Home() {
             <div className="card-body pt-2 pb-0">
               <div className="d-flex flex-wrap align-items-center">
                 <span className="fs-28 text-black font-w600 me-3">
-                  $678,345
+                  ₹ 678,345
                 </span>
                 <p className="me-sm-auto me-3 mb-sm-0 mb-3">
-                  last month $563,443
+                  last month ₹ 563,443
                 </p>
                 <div className="d-flex align-items-center">
                   <svg
@@ -249,7 +264,7 @@ function Home() {
                     <path d="M0 6L6 2.62268e-07L12 6" fill="#37D159" />
                   </svg>
                 </div>
-              </div>              
+              </div>
               <ChartTimeLine />
             </div>
           </div>
@@ -323,7 +338,7 @@ function Home() {
                       <div>
                         <p className="fs-14 mb-1">Total Sale</p>
                         <span className="fs-18 text-black font-w700">
-                          2,346 Unit
+                          5 Unit
                         </span>
                       </div>
                     </div>
@@ -353,7 +368,7 @@ function Home() {
                       <div>
                         <p className="fs-14 mb-1">Total Rent</p>
                         <span className="fs-18 text-black font-w700">
-                          1,252 Unit
+                          25 Unit
                         </span>
                       </div>
                     </div>
@@ -499,7 +514,7 @@ function Home() {
                       <div className="progress mb-4" style={{ height: 10 }}>
                         <div
                           className="progress-bar bg-primary progress-animated"
-                          style={{ width: "75%", height: 10 }}                          
+                          style={{ width: "75%", height: 10 }}
                         >
                           <span className="sr-only">75% Complete</span>
                         </div>
@@ -513,7 +528,7 @@ function Home() {
                       <div className="progress mb-4" style={{ height: 10 }}>
                         <div
                           className="progress-bar bg-primary progress-animated"
-                          style={{ width: "100%", height: 10 }}                          
+                          style={{ width: "100%", height: 10 }}
                         >
                           <span className="sr-only">100% Complete</span>
                         </div>
@@ -580,12 +595,15 @@ function Home() {
                       </div>
                     </div>
                     <div className="col-lg-9 active-map-main">
-                      <div className="home-map active-map text-center" id="world-map">                       
-                        <WorldMap             
-                            size={svgMapStyle}                           
-                            fram={true}
-                            data={data}
-                            styleFunction={getStyle}
+                      <div
+                        className="home-map active-map text-center"
+                        id="world-map"
+                      >
+                        <WorldMap
+                          size={svgMapStyle}
+                          fram={true}
+                          data={data}
+                          styleFunction={getStyle}
                         />
                       </div>
                     </div>
@@ -647,12 +665,8 @@ function Home() {
                       />
                       <div>
                         <h6 className="fs-16 text-black font-w600">John Doe</h6>
-                        <div className="star-icons">                          
-                          <Star />{" "}
-                          <Star />{" "}
-                          <Star />{" "}
-                          <Star />{" "}
-                          <Star />
+                        <div className="star-icons">
+                          <Star /> <Star /> <Star /> <Star /> <Star />
                         </div>
                       </div>
                       <span className="fs-14 ms-auto">5m ago</span>
@@ -662,7 +676,7 @@ function Home() {
                       in Hastings deserved a big Thank You from us for moving us
                       from Jakarta to Medan during the lockdown.
                     </p>
-                  </div>                    
+                  </div>
                   <div className="pb-3 mb-3">
                     <div className="d-flex mb-3 flex-wrap align-items-end">
                       <img
@@ -676,11 +690,7 @@ function Home() {
                           Amelia Tuner
                         </h6>
                         <div className="star-icons">
-                          <Star />{" "}
-                          <Star />{" "}
-                          <Star />{" "}
-                          <Star />{" "}
-                          <Star />
+                          <Star /> <Star /> <Star /> <Star /> <Star />
                         </div>
                       </div>
                       <span className="fs-14 ms-auto">10h ago</span>
@@ -691,7 +701,6 @@ function Home() {
                       courteous and helpful every time.
                     </p>
                   </div>
-                 
                 </div>
                 <div className="card-footer border-0 p-0">
                   <Link

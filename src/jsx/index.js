@@ -146,6 +146,7 @@ const Markup = () => {
 	  { url: 'add-property', component: <AddProperty/> },
 	  { url: 'property-list', component: <PropertyList/> },
 	  { url: 'property-details', component: <PropertyDetails/> },
+	  { url: 'property-details/:propertyId', component: <PropertyDetails/> },
     
     //
 	  { url: 'flat-icons', component: <FlaticonIcons /> },

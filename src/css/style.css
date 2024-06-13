@@ -10471,11 +10471,7 @@ h1, .h1, .h1, h2, .h2, .h2, h3, .h3, .h3, h4, .h4, .h4, h5, .h5, .h5, h6, .h6, .
   background-color: var(--nav-headbg);
   transition: all .2s ease;
   z-index: 7; }
-  .nav-header .logo-abbr {
-    max-width: 2.9375rem; }
-    @media only screen and (max-width: 1480px) {
-      .nav-header .logo-abbr {
-        max-width: 2.8125rem; } }
+
     @media only screen and (max-width: 575px) {
       .nav-header .logo-abbr {
         width: 2.1875rem;
@@ -32877,7 +32873,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   overflow: hidden;
   background-color: #fff; }
   .property-card.style-1 .dz-meta {
-    margin-bottom: 10px; }
+    margin: 10px 0; }
     .property-card.style-1 .dz-meta ul li {
       font-weight: 500;
       display: inline-block;

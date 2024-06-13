@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Select from "react-select";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Tab, Nav, Collapse } from "react-bootstrap";
 import { RangeSlider } from "rsuite";
 import "rsuite/dist/rsuite.min.css";
@@ -8,29 +8,28 @@ import "rsuite/dist/rsuite.min.css";
 import PageTitle from "../../layouts/PageTitle";
 import { getAllProperties } from "../../../APIs/PropertyAPI";
 
-const location = [
-  { value: "1", label: "Select Location" },
-  { value: "2", label: "Candolim Beach" },
-  { value: "3", label: "Vagator" },
-  { value: "4", label: "Sharayu" },
-  { value: "5", label: "Siolim" },
-  { value: "6", label: "Morjim" },
+const Location = [
+  { value: "default", label: "Select Location" },
+  { value: "candolim", label: "Candolim Beach" },
+  { value: "vagator", label: "Vagator" },
+  { value: "sharayu", label: "Sharayu" },
+  { value: "siolim", label: "Siolim" },
+  { value: "morjim", label: "Morjim" },
 ];
 
-const type = [
-  { value: "1", label: "Property Type" },
-  { value: "2", label: "House" },
-  { value: "3", label: "Cottages" },
-  { value: "4", label: "Flat" },
-  { value: "5", label: "Villa" },
-  { value: "6", label: "Luxury Villa" },
+const Type = [
+  { value: "default", label: "Property Type" },
+  { value: "house", label: "House" },
+  { value: "cottage", label: "Cottages" },
+  { value: "flat", label: "Flat" },
+  { value: "villa", label: "Villa" },
+  { value: "luxury villa", label: "Luxury Villa" },
 ];
 
 const Rent = [
-  { value: "1", label: "Select Category" },
-  { value: "2", label: "For Rent" },
+  { value: "default", label: "Select Category" },
+  { value: "rent", label: "For Rent" },
 ];
-
 
 const Rentoption = [
   { value: "1", label: "Default" },
@@ -77,7 +76,20 @@ function BasicDetail(props) {
   );
 }
 
-const CardFooter = () => {
+const CardFooter = ({ id }) => {
+  const currentDomain = window.location.origin;
+
+  const handleShare = (id) => {
+    const nextTabUrl = `${currentDomain}/property-details/${id}`;
+
+    console.log("url", nextTabUrl);
+
+    // Copy the URL to clipboard
+    navigator.clipboard
+      .writeText(nextTabUrl)
+      .then(() => alert("Link copied to clipboard"))
+      .catch((error) => console.error("Failed to copy:", error));
+  };
   return (
     <ul>
       <li>
@@ -99,7 +111,7 @@ const CardFooter = () => {
         </Link>
       </li>
       <li>
-        <Link to={"#"}>
+        <Link to={"#"} onClick={() => handleShare(id)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -121,7 +133,7 @@ const CardFooter = () => {
         </Link>
       </li>
       <li>
-        <Link to={"#"}>
+        <Link to={`/property-details/${id}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -132,10 +144,10 @@ const CardFooter = () => {
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="feather feather-plus"
+            className="feather feather-arrow"
           >
-            <line x1="12" y1="5" x2="12" y2="19"></line>
-            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <path d="M5 19L19 5"></path>
+            <path d="M5 5H19V19"></path>
           </svg>
         </Link>
       </li>
@@ -144,24 +156,64 @@ const CardFooter = () => {
 };
 
 const PropertyList = () => {
-  const [data, setData] = useState([]);
-  const [value, setValue] = useState([30.01, 50.01]);
-  const [value2, setValue2] = useState([40.01, 60.01]);
+  const [properties, setProperties] = useState([]);
+  const [priceRange, setPriceRange] = useState([0, 100000]);
+  const [type, setType] = useState("");
+  const [location, setLocation] = useState("");
+  const [category, setCategory] = useState("");
   const [openMenu, setOpenMenu] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchProperties = async () => {
       try {
         const response = await getAllProperties();
 
-        setData(response.data);
+        setProperties(response.data);
       } catch (error) {
         console.error("Error fetching properties", error.message);
       }
     };
 
-    fetchData();
-  }, []);
+    fetchProperties();
+  }, [location, type, category]);
+
+  const handleLocationChange = (selectedOption) => {
+    setLocation(selectedOption.value);
+  };
+
+  const handleTypeChange = (selectedOption) => {
+    setType(selectedOption.value);
+  };
+
+  const handleCategoryChange = (selectedOption) => {
+    setCategory(selectedOption.value);
+  };
+
+  const handlePriceRangeChange = (value) => {
+    setPriceRange(value);
+  };
+
+  const filterProperties = () => {
+    console.log("properties", properties);
+    console.log("type", type);
+    console.log("location", location);
+    console.log("category", category);
+    return properties.filter((property) => {
+      return (
+        (location === "" ||
+          location === "default" ||
+          property.location.toLowerCase() === location) &&
+        (type === "" ||
+          type === "default" ||
+          property.propertyType.toLowerCase() === type)
+        // property.price >= priceRange[0] &&
+        // property.price <= priceRange[1]
+      );
+    });
+  };
+
+  const filteredProperties = filterProperties();
+  console.log("filter", filteredProperties);
   return (
     <>
       <PageTitle activeMenu={"Property List"} motherMenu={"Property"} />
@@ -200,16 +252,18 @@ const PropertyList = () => {
                       </div>
                       <div className="mb-3 col-lg-3 col-md-6">
                         <Select
-                          options={location}
-                          defaultValue={location[0]}
+                          options={Location}
+                          defaultValue={Location[0]}
+                          onChange={handleLocationChange}
                           className="custom-react-select"
                           isSearchable={false}
                         />
                       </div>
                       <div className="mb-3 col-lg-3 col-md-6">
                         <Select
-                          options={type}
-                          defaultValue={type[0]}
+                          options={Type}
+                          defaultValue={Type[0]}
+                          onChange={handleTypeChange}
                           className="custom-react-select"
                           isSearchable={false}
                         />
@@ -218,6 +272,7 @@ const PropertyList = () => {
                         <Select
                           options={Rent}
                           defaultValue={Rent[0]}
+                          onChange={handleCategoryChange}
                           className="custom-react-select"
                           isSearchable={false}
                         />
@@ -229,44 +284,40 @@ const PropertyList = () => {
                       <h6 className="title">Price Range</h6>
                       <div className="combined2 mt-3">
                         <RangeSlider
-                          max={80}
-                          step={0.01}
+                          max={100000}
+                          step={100}
                           tooltip={false}
                           className="combined-slider mb-3"
                           progress
-                          value={value}
-                          onChange={(value) => {
-                            setValue(value);
-                          }}
+                          onChange={handlePriceRangeChange}
                         />
                         <span
                           className="example-val"
                           id="slider-combined2-value-min"
                         >
-                          {value[0]}
+                          {priceRange[0]}
                         </span>{" "}
                         to{" "}
                         <span
                           className="example-val"
                           id="slider-combined2-value-max"
                         >
-                          {value[1]}
+                          {priceRange[1]}
                         </span>
                       </div>
                     </div>
-                    <div className="mb-3 col-lg-4 col-md-6">
+                    {/* <div className="mb-3 col-lg-4 col-md-6">
                       <h6 className="title">Area Range</h6>
                       <div className="combined mt-3">
                         <RangeSlider
-                          max={80}
-                          step={0.01}
+                          max={100000}
+                          min={0}
+                          step={10}
                           tooltip={false}
                           className="combined-slider mb-3"
                           progress
-                          value={value2}
-                          onChange={(value) => {
-                            setValue2(value);
-                          }}
+                          value={priceRange}
+                          onChange={handlePriceRangeChange}
                         />
                         <span
                           className="example-val"
@@ -282,7 +333,7 @@ const PropertyList = () => {
                           {value2[1]}
                         </span>
                       </div>
-                    </div>
+                    </div> */}
                     <div className="col-lg-4 col-md-6 align-self-end mb-3">
                       <button
                         className="btn btn-primary rounded-sm w-100"
@@ -302,8 +353,7 @@ const PropertyList = () => {
       </div>
       <Tab.Container defaultActiveKey={"Grid"}>
         <div className="my-3 row">
-          <div className="col-sm-6 align-self-center">
-          </div>
+          <div className="col-sm-6 align-self-center"></div>
           <div className="col-sm-6">
             <div className="d-flex justify-content-end align-items-center">
               <div className="d-flex align-items-center me-2">
@@ -367,7 +417,7 @@ const PropertyList = () => {
         <Tab.Content>
           <Tab.Pane eventKey={"Grid"}>
             <div className="row">
-              {data?.map((item, ind) => (
+              {filteredProperties?.map((item, ind) => (
                 <div
                   className="col-xl-3 col-xxl-4 col-md-6 col-sm-6 col-lg-4 m-b30"
                   key={ind}
@@ -400,7 +450,7 @@ const PropertyList = () => {
                       <img src={item.pictures[0]} alt="/" />
                     </div>
                     <div className="dz-content">
-                      <h3 className="title">{item.price}</h3>
+                      <h3 className="title">₹ {item.pricePerDay}</h3>
                       <div className="dz-meta">
                         <BasicDetail beds={item.maxBed} bath={item.maxBath} />
                       </div>
@@ -410,7 +460,7 @@ const PropertyList = () => {
                         <div className="property-card">
                           <h6 className="title mb-0">{item.name}</h6>
                         </div>
-                        <CardFooter />
+                        <CardFooter id={item.key} />
                       </div>
                     </div>
                   </div>
@@ -420,7 +470,7 @@ const PropertyList = () => {
           </Tab.Pane>
           <Tab.Pane eventKey={"List"}>
             <div className="row justify-content-lg-center">
-              {data.map((item, index) => (
+              {filteredProperties.map((item, index) => (
                 <div className="col-xl-6 col-lg-8 m-b30" key={index}>
                   <div className="property-card style-1 blog-half">
                     <div className="dz-media">
@@ -450,7 +500,7 @@ const PropertyList = () => {
                       <img src={item.pictures[0]} alt="/" />
                     </div>
                     <div className="dz-content">
-                      <h3 className="title">{data.price}</h3>
+                      <h3 className="title">₹ {item.pricePerDay}</h3>
                       <div className="dz-meta">
                         <BasicDetail beds={item.maxBed} bath={item.maxBath} />
                       </div>
@@ -460,7 +510,7 @@ const PropertyList = () => {
                         <div className="property-card">
                           <h6 className="title mb-0">{item.name}</h6>
                         </div>
-                        <CardFooter />
+                        <CardFooter id={item.key} />
                       </div>
                     </div>
                   </div>

@@ -1,5 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import { FaWhatsapp } from "react-icons/fa";
+
+import { getPropertyByKey } from "../../../APIs/PropertyAPI";
 
 //** Import Image */
 import avatar1 from "../../../images/avatar/1.jpg";
@@ -10,19 +13,33 @@ import customers12 from "../../../images/customers/12.jpg";
 import FrontViewSlider from "../Omah/PropertyDetails/FrontViewSlider";
 import ImageGallery from "../Omah/PropertyDetails/ImageGallery";
 
-function StarIcon () {
-  return(
+function StarIcon() {
+  return (
     <div className="star-icons">
-      <i className="las la-star fs-16" />{" "}
-      <i className="las la-star fs-16" />{" "}
-      <i className="las la-star fs-16" />{" "}
-      <i className="las la-star fs-16" />{" "}
+      <i className="las la-star fs-16" /> <i className="las la-star fs-16" />{" "}
+      <i className="las la-star fs-16" /> <i className="las la-star fs-16" />{" "}
       <i className="las la-star fs-16" />
     </div>
-  )
+  );
 }
 
 function PropertyDetails() {
+  const { propertyId } = useParams();
+  const [property, setProperty] = useState({});
+
+  useEffect(() => {
+    const fetchProperty = async () => {
+      try {
+        const response = await getPropertyByKey(propertyId);
+        setProperty(response[0]);
+      } catch (error) {
+        console.error("Error fetching blog:", error.message);
+      }
+    };
+
+    fetchProperty();
+  }, [propertyId]);
+
   return (
     <>
       <div className="form-head page-titles d-flex  align-items-center">
@@ -33,19 +50,16 @@ function PropertyDetails() {
               <Link to="/property-details">Property</Link>
             </li>
             <li className="breadcrumb-item">
-              <Link to="/property-details">98AB Alexander Court New York</Link>
+              <Link to="/property-details">{property?.location}</Link>
             </li>
           </ol>
         </div>
         <Link to="/property-details" className="btn btn-danger rounded me-3">
           Update Info
         </Link>
-        <Link
-          to="/property-details"
-          className="btn btn-primary rounded light"
-        >
+        <Link to="/property-details" className="btn btn-primary rounded light">
           Refresh
-        </Link>        
+        </Link>
       </div>
       <div className="row">
         <div className="col-xl-3 col-xxl-4">
@@ -53,9 +67,9 @@ function PropertyDetails() {
             <div className="col-xl-12">
               <div className="card bg-primary text-center">
                 <div className="card-body">
-                  <h2 className="fs-30 text-white">SALE</h2>
+                  <h2 className="fs-30 text-white">RENT</h2>
                   <span className="text-white font-w300">
-                    $400.000 - $600.000
+                    ₹ {property?.pricePerDay}
                   </span>
                 </div>
               </div>
@@ -110,18 +124,33 @@ function PropertyDetails() {
                 <div className="card-header mb-0 border-0">
                   <h3 className="fs-20 text-black">Property Location</h3>
                 </div>
-                <div className="card-body pt-0 text-center">                  
-                    <iframe title="property1" className="mw-100 rounded map-area" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4820.9894056567555!2d75.83501800119436!3d25.147141888197254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1700818791122!5m2!1sen!2sin" 
-                        width="600" height="350" style={{border:"0"}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade">                    
-                    </iframe>
+                <div className="card-body pt-0 text-center">
+                  <iframe
+                    title="property1"
+                    className="mw-100 rounded map-area"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4820.9894056567555!2d75.83501800119436!3d25.147141888197254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1700818791122!5m2!1sen!2sin"
+                    width="600"
+                    height="350"
+                    style={{
+                      border: "0",
+                      filter: "blur(5px)",
+                      pointerEvents: "none",
+                    }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
                 <div className="card-footer border-0 p-0">
-                  <Link
-                    to="/property-details"
+                  <a
+                    href="https://chat.whatsapp.com/ByVqHoAghwr7M7dkoFpQZC"
                     className="btn btn-primary d-block rounded"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    View in Full Screen
-                  </Link>
+                    <FaWhatsapp size={20} style={{ marginRight: "8px" }} />
+                    Get Location
+                  </a>
                 </div>
               </div>
             </div>
@@ -132,10 +161,17 @@ function PropertyDetails() {
                 </div>
                 <div className="card-body pt-4">
                   <div className="media mb-3 mb-sm-4">
-                    <img src={customers10} alt="" className="rounded me-3" width={52}/>
+                    <img
+                      src={customers10}
+                      alt=""
+                      className="rounded me-3"
+                      width={52}
+                    />
                     <div className="media-body">
                       <h4 className="fs-16 font-w600 mb-0">
-                        <Link to="/review" className="text-black">James Humbly</Link>
+                        <Link to="/review" className="text-black">
+                          James Humbly
+                        </Link>
                       </h4>
                       <span className="fs-14 d-block mb-2">
                         2 June 2018 - 4 June 2019
@@ -144,10 +180,17 @@ function PropertyDetails() {
                     </div>
                   </div>
                   <div className="media mb-3 mb-sm-4">
-                    <img src={customers11} alt="" className="rounded me-3" width={52} />
+                    <img
+                      src={customers11}
+                      alt=""
+                      className="rounded me-3"
+                      width={52}
+                    />
                     <div className="media-body">
                       <h4 className="fs-16 font-w600 mb-0">
-                        <Link to="/review" className="text-black">Erico Lee</Link>
+                        <Link to="/review" className="text-black">
+                          Erico Lee
+                        </Link>
                       </h4>
                       <span className="fs-14 d-block mb-2">
                         2 June 2018 - 4 June 2019
@@ -156,10 +199,17 @@ function PropertyDetails() {
                     </div>
                   </div>
                   <div className="media">
-                    <img src={customers12} alt="" className="rounded me-3" width={52}/>
+                    <img
+                      src={customers12}
+                      alt=""
+                      className="rounded me-3"
+                      width={52}
+                    />
                     <div className="media-body">
                       <h4 className="fs-16 font-w600 mb-0">
-                        <Link to="/review" className="text-black">Cindy Samantha</Link>
+                        <Link to="/review" className="text-black">
+                          Cindy Samantha
+                        </Link>
                       </h4>
                       <span className="fs-14 d-block mb-2">
                         2 June 2018 - 4 June 2019
@@ -178,7 +228,7 @@ function PropertyDetails() {
               <div className="card">
                 <div className="card-body">
                   <div className="front-view-slider mb-sm-5 mb-3 owl-carousel">
-                    <FrontViewSlider />
+                    <FrontViewSlider picture={property?.pictures?.[0]} id={property?.key} />
                   </div>
                   <div>
                     <Link
@@ -189,9 +239,7 @@ function PropertyDetails() {
                     </Link>
                     <div className="d-md-flex d-block mb-sm-5 mb-4">
                       <div className="me-auto mb-md-0 mb-4">
-                        <h3>
-                          98AB Alexander Court, London
-                        </h3>
+                        <h3>{property?.name}</h3>
                         <span className="fs-16">
                           <svg
                             width={26}
@@ -213,15 +261,13 @@ function PropertyDetails() {
                               fill="#666666"
                             />
                           </svg>
-                          45 Connor St. London, 44523
+                          {property?.location}
                         </span>
                       </div>
                       <div className="ms-md-4 text-md-right">
-                        <p className="fs-14 text-black mb-1 me-1">
-                          Price range
-                        </p>
+                        <p className="fs-14 text-black mb-1 me-1">Price</p>
                         <h4 className="fs-24 text-primary">
-                          $400.000 - $600.000
+                          ₹ {property?.pricePerDay}
                         </h4>
                       </div>
                     </div>
@@ -243,7 +289,7 @@ function PropertyDetails() {
                             fill="#3B4CB8"
                           />
                         </svg>
-                        4 Bedroom
+                        {property?.maxBed} Bedrooms
                       </Link>
                       <Link
                         to="/property-details"
@@ -262,7 +308,7 @@ function PropertyDetails() {
                             fill="#3B4CB8"
                           />
                         </svg>
-                        2 Bathroom
+                        {property?.maxBath} Bathroom
                       </Link>
                       <Link
                         to="/property-details"
@@ -293,40 +339,16 @@ function PropertyDetails() {
                       </Link>
                     </div>
                     <h4>Description</h4>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                      sint occaecat cupidatat non proident, sunt in culpa qui
-                      officia deserunt mollit anim id est laborum
-                    </p>
-                    <p>
-                      Sed ut perspiciatis unde omnis iste natus error sit
-                      voluptatem accusantium doloremque laudantium, totam rem
-                      aperiam, eaque ipsa quae ab illo inventore veritatis et
-                      quasi architecto beatae vitae dicta sunt explicabo. Nemo
-                      enim ipsam voluptatem quia voluptas sit aspernatur aut
-                      odit aut fugit, sed quia consequuntur magni dolores eos
-                      qui ratione voluptatem sequi nesciunt. Neque porro
-                      quisquam est, qui dolorem ipsum quia dolor sit amet,
-                      consectetur, adipisci velit, sed quia non numquam eius
-                      modi tempora incidunt ut labore et dolore magnam aliquam
-                      quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-                      exercitationem ullam corporis suscipit laboriosam, nisi ut
-                      aliquid ex ea commodi consequatur? Quis autem vel eum
-                    </p>
+                    <p>{property?.description}</p>
                   </div>
                 </div>
               </div>
             </div>
             <div className="col-xl-12">
               <div className="card">
-                <div className="card-body image-gallery-body">
+                <div className="card-body imag  e-gallery-body">
                   <div className="image-gallery owl-carousel">
-                    <ImageGallery />
+                    <ImageGallery pictures={property?.pictures} />
                   </div>
                 </div>
               </div>
