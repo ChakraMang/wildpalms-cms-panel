@@ -68,7 +68,7 @@ function PropertyDetails() {
               <div className="card bg-primary text-center">
                 <div className="card-body">
                   <h2 className="fs-30 text-white">RENT</h2>
-                  <span className="text-white font-w300">
+                  <span className="text-white font-w300" style={{fontSize: '20px'}}>
                     ₹ {property?.pricePerDay}
                   </span>
                 </div>

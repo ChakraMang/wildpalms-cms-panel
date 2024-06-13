@@ -14,7 +14,7 @@ const AddAgent = () => {
                 <div className="col-12">
                     <div className="card">
                         <div className="card-header">
-                            <h4 className="card-title">Add Agent Wizard</h4>
+                            <h4 className="card-title">Add Agent</h4>
                         </div>
                         <div className="card-body wizard-box">
                             <div className="wizard-step-container">

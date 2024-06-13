@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 /// Image
-import profile from "../../../images/profile/17.jpg";
 import avatar from "../../../images/avatar/1.jpg";
 import { Dropdown } from "react-bootstrap";
 import Logout from './Logout'; 
@@ -48,7 +47,7 @@ const Header = ({ onNote }) => {
               </div>
             </div>
             <ul className="navbar-nav header-right">
-              <Dropdown className="nav-item dropdown notification_dropdown">
+              {/* <Dropdown className="nav-item dropdown notification_dropdown">
                 <Dropdown.Toggle
                   variant=""
                   className="nav-link  ai-icon i-false"
@@ -306,7 +305,7 @@ const Header = ({ onNote }) => {
                     </ul>
                   </div>
                 </Dropdown.Menu>
-              </Dropdown>
+              </Dropdown> */}
               <Dropdown className="nav-item dropdown header-profile ms-sm-4 ms-2">
                 <Dropdown.Toggle
                   as="a"
@@ -327,7 +326,7 @@ const Header = ({ onNote }) => {
                   />
                 </Dropdown.Toggle>
                 <Dropdown.Menu align="end" className="mt-2">
-                  <Link to="/app-profile" className="dropdown-item ai-icon">
+                  <Link to="/agent-profile" className="dropdown-item ai-icon">
                     <svg
                       id="icon-user1"
                       xmlns="http://www.w3.org/2000/svg"
