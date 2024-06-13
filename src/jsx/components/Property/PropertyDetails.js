@@ -47,10 +47,10 @@ function PropertyDetails() {
           <h4 className="mb-1">Property Details</h4>
           <ol className="breadcrumb">
             <li className="breadcrumb-item active">
-              <Link to="/property-details">Property</Link>
+              <Link to="/property-list">Property</Link>
             </li>
             <li className="breadcrumb-item">
-              <Link to="/property-details">{property?.location}</Link>
+              <Link to="/property-list">{property?.location}</Link>
             </li>
           </ol>
         </div>

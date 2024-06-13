@@ -17,7 +17,7 @@ const StepSecond = () => {
             </div>
             <div className="form-group col-sm-12">
                 <label className="form-label required">Description</label>
-                <textarea className="form-control" id="validationCustom010"  rows="5" defaultValue="What would you like to see?" required></textarea>
+                <textarea className="form-control" id="validationCustom010"  rows="5" placeholder="What would you like to see?" required></textarea>
             </div>
             <div className="form-group col-sm-6">
                 <label className="form-label required">Address</label>

@@ -20,7 +20,6 @@ import Task from './components/Dashboard/Task';
 
 //Agent
 import AddAgent from './components/Agent/AddAgent';
-import AddAgentWizard from './components/Agent/AddAgentWizard';
 import AllAgents from './components/Agent/AllAgents';
 import AgentsProfile from './components/Agent/AgentsProfile';
 
@@ -138,7 +137,6 @@ const Markup = () => {
     
     //Agent
 	  { url: 'add-agent', component: <AddAgent/> },
-	  { url: 'add-agent-wizard', component: <AddAgentWizard/> },
 	  { url: 'all-agents', component: <AllAgents/> },
 	  { url: 'agent-profile', component: <AgentsProfile/> },
     

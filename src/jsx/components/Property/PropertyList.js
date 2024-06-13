@@ -8,14 +8,6 @@ import "rsuite/dist/rsuite.min.css";
 import PageTitle from "../../layouts/PageTitle";
 import { getAllProperties } from "../../../APIs/PropertyAPI";
 
-const Location = [
-  { value: "default", label: "Select Location" },
-  { value: "candolim", label: "Candolim Beach" },
-  { value: "vagator", label: "Vagator" },
-  { value: "sharayu", label: "Sharayu" },
-  { value: "siolim", label: "Siolim" },
-  { value: "morjim", label: "Morjim" },
-];
 
 const Type = [
   { value: "default", label: "Property Type" },

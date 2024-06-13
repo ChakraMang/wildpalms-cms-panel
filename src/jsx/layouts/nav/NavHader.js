@@ -7,8 +7,6 @@ import { Link } from "react-router-dom";
 //
 import { navtoggle } from "../../../store/actions/AuthActions";
 
-/// images
-import logoText from "../../../images/logo-text.png";
 
 const NavHader = () => {
   const [toggle, setToggle] = useState(false);
@@ -45,8 +43,6 @@ const NavHader = () => {
     <div className="nav-header">
       <Link to="/" className="brand-logo">
         <img className="logo-abbr" src={logo} alt="" />
-        <img className="logo-compact" src={logoText} alt="" />
-        <img className="brand-title" src={logoText} alt="" />
       </Link>
 
       <div

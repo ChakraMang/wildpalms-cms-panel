@@ -73,7 +73,7 @@ function Analytics() {
         </div>
         <Link to="/analytics" className="btn btn-primary rounded light ">
           Refresh
-        </Link>      
+        </Link>
       </div>
       <div className="row">
         <div className="col-xl-6">
@@ -110,9 +110,9 @@ function Analytics() {
                 </span>
                 <div>
                   <p className="fs-14 mb-1">Total Rent</p>
-                  <span className="fs-18 text-black font-w700">1,252 Unit</span>
+                  <span className="fs-18 text-black font-w700">25 Unit</span>
                 </div>
-              </div>              
+              </div>
               <ChartBar1 />
             </div>
           </div>
@@ -151,7 +151,7 @@ function Analytics() {
                 </span>
                 <div>
                   <p className="fs-14 mb-1">Total Sale</p>
-                  <span className="fs-18 text-black font-w700">2,346 Unit</span>
+                  <span className="fs-18 text-black font-w700">5 Unit</span>
                 </div>
               </div>
               <ChartBar2 />
@@ -200,10 +200,10 @@ function Analytics() {
             <div className="card-body pt-2 pb-0">
               <div className="d-flex flex-wrap align-items-center">
                 <span className="fs-36 text-black font-w600 me-3">
-                  $678,345
+                  ₹ 678,345
                 </span>
                 <p className="me-sm-auto me-3 mb-sm-0 mb-3">
-                  last month $563,443
+                  last month ₹ 563,443
                 </p>
                 <div className="d-flex align-items-center">
                   <svg
@@ -260,14 +260,18 @@ function Analytics() {
                 <div className="card-body">
                   <div className="media align-items-center">
                     <div className="media-body me-3">
-                      <h2 className="fs-36 text-black font-w600">2,356</h2>
+                      <h2 className="fs-36 text-black font-w600">5</h2>
                       <p className="property-p mb-0 text-black font-w500">
                         Properties for Sale
                       </p>
                       <span className="fs-13">Target 3k/month</span>
                     </div>
-                    <div className="d-inline-block position-relative donut-chart-sale">                      
-                      <ChartDoughnut value={71} backgroundColor="#3C4CB8" backgroundColor2="rgba(236,236,236,1)"/>
+                    <div className="d-inline-block position-relative donut-chart-sale">
+                      <ChartDoughnut
+                        value={71}
+                        backgroundColor="#3C4CB8"
+                        backgroundColor2="rgba(236,236,236,1)"
+                      />
                       <small className="text-primary">71%</small>
                       <span className="circle bgl-primary" />
                     </div>
@@ -280,14 +284,18 @@ function Analytics() {
                 <div className="card-body">
                   <div className="media align-items-center">
                     <div className="media-body me-3">
-                      <h2 className="fs-36 text-black font-w600">2,206</h2>
+                      <h2 className="fs-36 text-black font-w600">25</h2>
                       <p className="property-p mb-0 text-black font-w500">
                         Properties for Rent
                       </p>
                       <span className="fs-13">Target 3k/month</span>
                     </div>
-                    <div className="d-inline-block position-relative donut-chart-sale">                     
-                      <ChartDoughnut value={90} backgroundColor="#37D15A" backgroundColor2="rgba(236,236,236,1)"/>
+                    <div className="d-inline-block position-relative donut-chart-sale">
+                      <ChartDoughnut
+                        value={90}
+                        backgroundColor="#37D15A"
+                        backgroundColor2="rgba(236,236,236,1)"
+                      />
                       <small className="text-success">90%</small>
                       <span className="circle bgl-success" />
                     </div>
@@ -467,7 +475,7 @@ function Analytics() {
               <div className="row">
                 <div className="col-lg-3 col-md-4">
                   <p className="mb-2 d-flex align-items-center  fs-16 text-black font-w500">
-                    Europe
+                    Candolim
                     <span className="pull-right text-dark fs-14 ms-2">
                       653 Unit
                     </span>
@@ -482,7 +490,7 @@ function Analytics() {
                     </div>
                   </div>
                   <p className="mb-2 d-flex align-items-center  fs-16 text-black font-w500">
-                    Asia
+                    Siolim
                     <span className="pull-right text-dark fs-14 ms-2">
                       653 Unit
                     </span>
@@ -497,7 +505,7 @@ function Analytics() {
                     </div>
                   </div>
                   <p className="mb-2 d-flex align-items-center  fs-16 text-black font-w500">
-                    Africa
+                    Sharayu
                     <span className="pull-right text-dark fs-14 ms-2">
                       653 Unit
                     </span>
@@ -512,7 +520,7 @@ function Analytics() {
                     </div>
                   </div>
                   <p className="mb-2 d-flex align-items-center  fs-16 text-black font-w500">
-                    Australia
+                    Morjim
                     <span className="pull-right text-dark fs-14 ms-2">
                       653 Unit
                     </span>
@@ -527,7 +535,7 @@ function Analytics() {
                     </div>
                   </div>
                   <p className="mb-2 d-flex align-items-center  fs-16 text-black font-w500">
-                    America
+                    Vagator
                     <span className="pull-right text-dark fs-14 ms-2">
                       653 Unit
                     </span>
@@ -557,13 +565,13 @@ function Analytics() {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-9 col-md-8 active-map-main">                 
+                <div className="col-lg-9 col-md-8 active-map-main">
                   <div className="analytics-map active-map text-center">
-                   <WorldMap             
-                        size={svgMapStyle}                           
-                        fram={true}
-                        data={data}
-                        styleFunction={getStyle}
+                    <WorldMap
+                      size={svgMapStyle}
+                      fram={true}
+                      data={data}
+                      styleFunction={getStyle}
                     />
                   </div>
                 </div>

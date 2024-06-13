@@ -1,149 +1,120 @@
-import React from 'react';
-import Select from 'react-select';
-import { Uploader } from 'rsuite';
+import React,{useState} from 'react';
 
 import PageTitle from '../../layouts/PageTitle';
-
-
-
-const Rent = [
-    { value: '1', label: 'For Rent' },
-    { value: '2', label: 'For Sale' },
-]
-const beds = [
-    { value: '1', label: '1' },
-    { value: '2', label: '2' },
-    { value: '3', label: '3' },
-    { value: '4', label: '4' },
-    { value: '5', label: '5' },
-    { value: '6', label: '6' }
-];
-const options0 = [
-    { value: '1', label: '1' },
-    { value: '2', label: '2' },
-    { value: '3', label: '3' },
-    { value: '4', label: '4' },
-    { value: '5', label: '5' },
-    { value: '6', label: '6' }
-];
-const options1 = [
-    { value: '1', label: '1' },
-    { value: '2', label: '2' },
-    { value: '3', label: '3' },
-    { value: '4', label: '4' },
-    { value: '5', label: '5' },
-    { value: '6', label: '6' }
-];
-const options2 = [
-    { value: '1', label: 'Blue Sky' },
-    { value: '2', label: 'Zephyr' },
-    { value: '3', label: 'Premiere' }
-];
+import StepSecond from './StepSecond';
+import StepFirst from './StepFirst';
+import ThirdStep from './ThirdStep';
 
 const AddAgent = () => {
+    const [goSteps, setGoSteps] = useState(0);
     return (
         <>
-            <PageTitle activeMenu={"Add Agent"} motherMenu={"Agents"} />
+            <PageTitle activeMenu="Add Agent Wizard" motherMenu="Agents" />
             <div className="row">
                 <div className="col-12">
                     <div className="card">
                         <div className="card-header">
-                            <h4 className="card-title">Add Agent</h4>
+                            <h4 className="card-title">Add Agent Wizard</h4>
                         </div>
-                        <div className="card-body">
-                            <form>
-                                <div className="row">
-                                    <div className="mb-3 col-lg-4 col-md-6">
-                                        <label className="form-label">Property Type</label>
-                                        <input type="text" className="form-control" placeholder="office,villa,apartment" required="" />
-                                    </div>
-                                    <div className="mb-3 col-lg-4 col-md-6">
-                                        <label className="form-label">Property Status</label>
-                                        <Select 
-                                            options={Rent} 
-                                            defaultValue={Rent[0]}
-                                            className="custom-react-select"
-                                            isSearchable = {false}
-                                        />                                         
-                                    </div>
-                                    <div className="mb-3 col-lg-4 col-md-6">
-                                        <label className="form-label">Property Price</label>
-                                        <input type="text" className="form-control" placeholder="$2800" required="" />
-                                    </div>
-                                    <div className="mb-3 col-lg-4 col-md-6">
-                                        <label className="form-label">Max Rooms</label>
-                                        <Select 
-                                            options={options0} 
-                                            defaultValue={options0[0]}
-                                            className="custom-react-select"
-                                            isSearchable = {false}
-                                        /> 
-                                    </div>
-                                    <div className="mb-3 col-lg-4 col-md-6">
-                                        <label className="form-label">Beds</label>
-                                        <Select 
-                                            options={beds} 
-                                            defaultValue={beds[0]}
-                                            className="custom-react-select"
-                                            isSearchable = {false}
-                                        /> 
-                                    </div>
-                                    <div className="mb-3 col-lg-4 col-md-6">
-                                        <label className="form-label">Baths</label>                                       
-                                        <Select 
-                                            options={options1} 
-                                            defaultValue={options1[0]}
-                                            className="custom-react-select"
-                                            isSearchable = {false}
-                                        />  
-                                    </div>
-                                    <div className="mb-3 col-lg-4 col-md-6">
-                                        <label className="form-label">Area</label>
-                                        <input type="text" className="form-control" placeholder="85 sq ft" />
-                                    </div>
-                                    <div className="mb-3 col-lg-4 col-md-6">
-                                        <label className="form-label">Price</label>
-                                        <input type="text" className="form-control" placeholder="$3000" />
-                                    </div>
-                                    <div className="mb-3 col-lg-4 col-md-6">
-                                        <label className="form-label">Premiere</label>
-                                        <Select 
-                                            options={options2} 
-                                            defaultValue={options2[0]}
-                                            className="custom-react-select"
-                                            isSearchable = {false}
-                                        />                                             
-                                    </div>
-                                    <div className="mb-3 col-12">
-                                        <label className="form-label">Description</label>
-                                        <textarea className="form-control" 
-                                            defaultValue={""}
-                                            rows="4" 
-                                        />
-                                    </div>
-                                    <div className="mb-3 col-sm-6">
-                                        <label className="form-label">Address</label>
-                                        <input type="text" className="form-control" placeholder="Address of your property" />
-                                    </div>
-                                    <div className="mb-3 col-sm-6">
-                                        <label className="form-label">Zip Code</label>
-                                        <input type="number" id="zip_code" className="form-control" placeholder="Enter pin code" required="" />
-                                    </div>
-                                    
+                        <div className="card-body wizard-box">
+                            <div className="wizard-step-container">
+                                <ul className="wizard-steps">
+                                    <li className={`step-container step-1 ${goSteps === 0 ? 'active' : ''}`}
+                                        onClick={() => setGoSteps(0)}
+                                    >
+                                        <div className="media">
+                                            <div className="step-icon">
+                                                <i data-feather="check"></i>
+                                                <span>1</span>
+                                            </div>
+                                            <div className="media-body">
+                                                <h5>Get started</h5>
+                                                <h6>Account information</h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li className={`step-container step-2 ${goSteps === 1 ? 'active' : ''}`}
+                                        onClick={() => setGoSteps(1)}
+                                    >
+                                        <div className="media">
+                                            <div className="step-icon">
+                                                <i data-feather="check"></i>
+                                                <span>2</span>
+                                            </div>
+                                            <div className="media-body">
+                                                <h5>Login details</h5>
+                                                <h6>Set your email</h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li className={`step-container step-3 ${goSteps === 2 ? 'active' : ''}`}
+                                        onClick={() => setGoSteps(2)}
+                                    >
+                                        <div className="media">
+                                            <div className="step-icon">
+                                                <i data-feather="check"></i>
+                                                <span>3</span>
+                                            </div>
+                                            <div className="media-body">
+                                                <h5>Upload files</h5>
+                                                <h6>Successfully submitted</h6>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div className="wizard-form-details log-in">
+                                    {goSteps === 0 && (
+                                        <div className="wizard-step-1 d-block">                                            
+                                            <form className="row" id="needs-validation">
+                                                <StepFirst />
+                                                <div className="next-btn text-end col-sm-12"
+                                                    onClick={() => setGoSteps(1)}
+                                                >
+                                                    <button type="submit" className="btn btn-primary next1 btn-sm">
+                                                        Next 
+                                                        <i className="fas fa-arrow-right ms-2" />
+                                                    </button>
+                                                </div>
+                                             </form>
+                                        </div>
+                                    )}
+                                    {goSteps === 1 && (
+                                        <div className="wizard-step-2">
+                                            <form className="row" id="needs-validation1">
+                                                <StepSecond />                                        
+                                                <div className="next-btn d-flex col-sm-12">
+                                                    <button type="button" className="btn btn-primary prev1 btn-sm"
+                                                        onClick={() => setGoSteps(0)}
+                                                    >
+                                                        <i className="fas fa-arrow-left me-2" />
+                                                        Previous
+                                                    </button>
+                                                    <button type="submit" className="btn btn-primary next2 btn-sm"
+                                                        onClick={() => setGoSteps(2)}
+                                                    >
+                                                        Next 
+                                                        <i className="fas fa-arrow-right ms-2" />
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    )}
+                                    {goSteps === 2 && (   
+                                        <div className="wizard-step-3">
+                                            <ThirdStep />
+                                            <div className="next-btn d-flex">
+                                                <button type="button" className="btn btn-primary prev2 btn-sm"
+                                                    onClick={() => setGoSteps(1)}
+                                                >
+                                                    <i className="fas fa-arrow-left me-2" /> Previous
+                                                </button>
+                                                <button type="button" className="btn btn-primary next3 btn-sm"
+                                                    onClick={() => setGoSteps(2)}
+                                                >submit</button>
+                                            </div>   
+                                        </div>
+                                    )}
                                 </div>
-                            </form>
-                            <div className="dropzone-admin mb-3">
-                                <label className="form-label">Media</label>
-                                
-                                <Uploader className="dropzone"  action="//jsonplaceholder.typicode.com/posts/" draggable>
-                                    <div className="dz-message needsclick"><i className="fas fa-cloud-upload-alt"></i>
-                                        <h6>Drop files here or click to upload.</h6>
-                                    </div>
-                                </Uploader>
-                            </div>  
-                            <div className="pt-3">
-                                <button type="button" className="btn btn-sm btn-primary me-2">Submit</button>
-                                <button type="button" className="btn btn-sm btn-danger light">Cancel</button>
                             </div>
                         </div>
                     </div>

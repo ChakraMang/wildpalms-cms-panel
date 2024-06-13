@@ -250,7 +250,7 @@ const AgentsProfile = () => {
                             ))}                       
                     </div>
                 </div>
-                <div className="col-xl-3 col-xxl-12">
+                {/* <div className="col-xl-3 col-xxl-12">
                     <div className="card">
                         <div className="card-header">
                             <h4 className="card-title">My Files</h4>
@@ -322,7 +322,7 @@ const AgentsProfile = () => {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </>
     );
