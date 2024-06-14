@@ -12,8 +12,6 @@ const Type = [
   { value: "villa", label: "Villa" },
   { value: "luxury villa", label: "Luxury Villa" },
 ];
-const Rent = [{ value: "1", label: "For Rent" }];
-
 const Location = [
   { value: "default", label: "Select Location" },
   { value: "candolim", label: "Candolim Beach" },
@@ -21,36 +19,6 @@ const Location = [
   { value: "sharayu", label: "Sharayu" },
   { value: "siolim", label: "Siolim" },
   { value: "morjim", label: "Morjim" },
-];
-
-const beds = [
-  { value: "1", label: "1" },
-  { value: "2", label: "2" },
-  { value: "3", label: "3" },
-  { value: "4", label: "4" },
-  { value: "5", label: "5" },
-  { value: "6", label: "6" },
-];
-const options0 = [
-  { value: "1", label: "1" },
-  { value: "2", label: "2" },
-  { value: "3", label: "3" },
-  { value: "4", label: "4" },
-  { value: "5", label: "5" },
-  { value: "6", label: "6" },
-];
-const options1 = [
-  { value: "1", label: "1" },
-  { value: "2", label: "2" },
-  { value: "3", label: "3" },
-  { value: "4", label: "4" },
-  { value: "5", label: "5" },
-  { value: "6", label: "6" },
-];
-const options2 = [
-  { value: "1", label: "Blue Sky" },
-  { value: "2", label: "Zephyr" },
-  { value: "3", label: "Premiere" },
 ];
 
 const inputBlog = [

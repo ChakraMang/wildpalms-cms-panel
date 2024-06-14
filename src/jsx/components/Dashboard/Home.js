@@ -659,12 +659,12 @@ function Home() {
                     <div className="d-flex mb-3 flex-wrap align-items-end">
                       <img
                         className="rounded me-3"
-                        src={customers1}
+                        src="https://wildpalms-hospitality-db.s3.ap-south-1.amazonaws.com/Customers/Niharika/Niharika.jpeg"
                         width={58}
                         alt=""
                       />
                       <div>
-                        <h6 className="fs-16 text-black font-w600">John Doe</h6>
+                        <h6 className="fs-16 text-black font-w600">Niharika</h6>
                         <div className="star-icons">
                           <Star /> <Star /> <Star /> <Star /> <Star />
                         </div>
@@ -672,23 +672,23 @@ function Home() {
                       <span className="fs-14 ms-auto">5m ago</span>
                     </div>
                     <p className="fs-14 mb-0">
-                      Friendly service Josh, Lunar and everyone at Just Property
-                      in Hastings deserved a big Thank You from us for moving us
-                      from Jakarta to Medan during the lockdown.
-                    </p>
+                      I recently enjoyed a fantastic stay at Wildpalms
+                      Hospitality in North Goa. The experience was nothing short
+                      of exceptional. The villa’s Indo-Portuguese design
+                      immediately caught our eye, and the private pool provided
+                      a perfect oasis of relaxation. <strong>SEE MORE</strong> 
+                      </p>
                   </div>
                   <div className="pb-3 mb-3">
                     <div className="d-flex mb-3 flex-wrap align-items-end">
                       <img
                         className="rounded me-3"
-                        src={customers2}
+                        src="https://wildpalms-hospitality-db.s3.ap-south-1.amazonaws.com/Customers/Shivi/Shivi.jpeg"
                         width={58}
                         alt=""
                       />
                       <div>
-                        <h6 className="fs-16 text-black font-w600">
-                          Amelia Tuner
-                        </h6>
+                        <h6 className="fs-16 text-black font-w600">Shivi</h6>
                         <div className="star-icons">
                           <Star /> <Star /> <Star /> <Star /> <Star />
                         </div>
@@ -696,9 +696,11 @@ function Home() {
                       <span className="fs-14 ms-auto">10h ago</span>
                     </div>
                     <p className="fs-14 mb-0">
-                      I viewed a number of properties with Just Property and
-                      found them to be professional, efficient, patient,
-                      courteous and helpful every time.
+                      I had an amazing stay at Wildpalms Hospitality in North
+                      Goa. The villa’s design was exquisite, and the private
+                      pool was a perfect retreat. The staff was incredibly
+                      attentive, and the hosts ensured our comfort throughout
+                      our stay. Highly recommended!
                     </p>
                   </div>
                 </div>

@@ -16,7 +16,14 @@ const Type = [
   { value: "villa", label: "Villa" },
   { value: "luxury villa", label: "Luxury Villa" },
 ];
-
+const Location = [
+  { value: "default", label: "Select Location" },
+  { value: "candolim", label: "Candolim Beach" },
+  { value: "vagator", label: "Vagator" },
+  { value: "sharayu", label: "Sharayu" },
+  { value: "siolim", label: "Siolim" },
+  { value: "morjim", label: "Morjim" },
+];
 const Rent = [
   { value: "default", label: "Select Category" },
   { value: "rent", label: "For Rent" },

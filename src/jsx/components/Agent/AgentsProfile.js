@@ -11,17 +11,17 @@ import profile from "../../../images/profile/profile.png";
 const basicInfo = [
   { title: "Age", subtitle: "24" },
   { title: "Customer Gender", subtitle: "Male" },
-  { title: "City", subtitle: "New York City" },
-  { title: "State", subtitle: "New York" },
-  { title: "Country", subtitle: "USA" },
-  { title: "Post Code", subtitle: "1023" },
-  { title: "Email", subtitle: "example@gmail.com" },
+  { title: "City", subtitle: "Bengaluru" },
+  { title: "State", subtitle: "Karnataka" },
+  { title: "Country", subtitle: "India" },
+  { title: "Picode", subtitle: "788001" },
+  { title: "Email", subtitle: "nikhilgupta@wildpalmshospotality.com" },
 ];
 
 const agentData = [
-  { title: "Name", detail: "Deangelo Sena" },
-  { title: "Agency ", detail: "All American Real State" },
-  { title: "City", detail: "New York" },
+  { title: "Name", detail: "Nikhil Gupta" },
+  { title: "Agency ", detail: "Wildpalms Hospitality" },
+  { title: "City", detail: "Bengaluru" },
 ];
 
 const cardWidget = [
@@ -95,14 +95,14 @@ const AgentsProfile = () => {
                 >
                   <div className="profile-photo">
                     <img
-                      src={profile}
+                      src="https://wildpalms-hospitality-db.s3.ap-south-1.amazonaws.com/Users/Nikhil%20Gupta/Nikhil%20Gupta.jpg"
                       width="100"
                       className="img-fluid rounded-circle"
                       alt="/"
                     />
                   </div>
-                  <h3 className="mt-3 mb-1 text-white">Deangelo Sena</h3>
-                  <p className="text-white mb-0">Senior Manager</p>
+                  <h3 className="mt-3 mb-1 text-white">Nikhil Gupta</h3>
+                  <p className="text-white mb-0">CEO & Founder</p>
                 </div>
                 <ul className="list-group list-group-flush">
                   {basicInfo.map((item, ind) => (
@@ -168,9 +168,7 @@ const AgentsProfile = () => {
                         <div className="card-body">
                           <div className="media align-items-center">
                             <div className="media-body me-2">
-                              <h2 className="fs-28 text-black font-w600">
-                                2,356
-                              </h2>
+                              <h2 className="fs-28 text-black font-w600">5 </h2>
                               <p className="property-p mb-0 text-black font-w500">
                                 For Sale
                               </p>
@@ -195,7 +193,7 @@ const AgentsProfile = () => {
                           <div className="media align-items-center">
                             <div className="media-body me-2">
                               <h2 className="fs-28 text-black font-w600">
-                                2,206
+                                25
                               </h2>
                               <p className="property-p mb-0 text-black font-w500">
                                 For Rent
