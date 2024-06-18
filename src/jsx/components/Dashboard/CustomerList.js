@@ -185,10 +185,10 @@ function CustomerList() {
             <div className="card-body p-0">
               {customerData.map((item, i) => (
                 <div className="row border-bottom mx-0 pt-4 px-2 align-items-center ">
-                  <div className="col-xl-3 col-xxl-4 col-lg-6 col-sm-12 mb-sm-4 mb-3 align-items-center  media">
+                  <div className="col-xl-3 col-xxl-3 col-lg-4 col-sm-12 mb-sm-4 mb-3 align-items-center  media">
                     <img
                       className="me-sm-4 me-3 img-fluid rounded"
-                      width={90}
+                      width={80}
                       src={item.profilePic}
                       alt="DexignZone"
                     />
@@ -202,7 +202,7 @@ function CustomerList() {
                       </span>
                     </div>
                   </div>
-                  <div className="col-xl-2 col-xxl-2 col-lg-3 col-sm-4 mb-sm-4 col-6 mb-3">
+                  <div className="col-xl-2 col-xxl-2 col-lg-2 col-sm-4 mb-sm-4 col-6 mb-3">
                     <small className="mb-2 d-block">Location</small>
                     <span className="text-black font-w600">
                       {item?.location}
@@ -214,13 +214,13 @@ function CustomerList() {
                       {item?.phoneNumber}
                     </span>
                   </div>
-                  <div className="col-xl-2 col-xxl-3 col-lg-6 col-sm-4 mb-sm-4 mb-3">
+                  <div className="col-xl-2 col-xxl-3 col-lg-4 col-sm-4 mb-sm-4 mb-3">
                     <small className="mb-2 d-block">Email Address</small>
                     <span className="text-black font-w600">
                       {item?.emailId}
                     </span>
                   </div>
-                  <div className="col-xl-3 col-xxl-3 col-lg-6 col-sm-6 mb-sm-4 mb-4 d-flex ">
+                  <div className="col-xl-3 col-xxl-3 col-lg-4 col-sm-6 mb-sm-4 mb-4 d-flex ">
                     <ProfileDropdown data={item} />
                     {/* <Dropdown className="dropdown ms-4  mt-auto mb-auto">
                       <Dropdown.Toggle

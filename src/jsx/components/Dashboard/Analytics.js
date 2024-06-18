@@ -1,4 +1,4 @@
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Dropdown } from "react-bootstrap";
 // Map
@@ -27,36 +27,34 @@ const RedialBar = loadable(() =>
 );
 
 const data = [
-  { country: "cn", value: 1389618778 }, 
-  { country: "in", value: 1311559204 }, 
-  { country: "us", value: 331883986 }, 
-  { country: "id", value: 264935824 }, 
-  { country: "pk", value: 210797836 }, 
-  { country: "br", value: 210301591 }, 
-  { country: "ng", value: 208679114 }, 
-  { country: "bd", value: 161062905 }, 
-  { country: "ru", value: 141944641 }, 
-  { country: "mx", value: 127318112 }, 
+  { country: "cn", value: 1389618778 },
+  { country: "in", value: 1311559204 },
+  { country: "us", value: 331883986 },
+  { country: "id", value: 264935824 },
+  { country: "pk", value: 210797836 },
+  { country: "br", value: 210301591 },
+  { country: "ng", value: 208679114 },
+  { country: "bd", value: 161062905 },
+  { country: "ru", value: 141944641 },
+  { country: "mx", value: 127318112 },
   { country: "jp", value: 126476461 },
   { country: "et", value: 118015321 },
-  { country: "ph", value: 113850136 }, 
-  { country: "eg", value: 104258327 }, 
-  { country: "vn", value: 97338579 },  
-  { country: "cd", value: 92377817 },  
-  { country: "tr", value: 85042700 },  
-  { country: "ir", value: 83992949 },  
-  { country: "de", value: 83019213 },  
-  { country: "th", value: 69950807 },  
+  { country: "ph", value: 113850136 },
+  { country: "eg", value: 104258327 },
+  { country: "vn", value: 97338579 },
+  { country: "cd", value: 92377817 },
+  { country: "tr", value: 85042700 },
+  { country: "ir", value: 83992949 },
+  { country: "de", value: 83019213 },
+  { country: "th", value: 69950807 },
 ];
-const getStyle = ({  
-  minValue,  
-}) => ({  
-  stroke: "rgb(200, 200, 200)",  
- cursor: "pointer",
+const getStyle = ({ minValue }) => ({
+  stroke: "rgb(200, 200, 200)",
+  cursor: "pointer",
 });
 
 function Analytics() {
-  const {svgMapStyle} = useContext(ThemeContext);
+  const { svgMapStyle } = useContext(ThemeContext);
   return (
     <>
       <div className="form-head page-titles d-flex  align-items-center">
@@ -200,7 +198,7 @@ function Analytics() {
             <div className="card-body pt-2 pb-0">
               <div className="d-flex flex-wrap align-items-center">
                 <span className="fs-36 text-black font-w600 me-3">
-                  ₹ 678,345
+                  ₹ 65,00,000
                 </span>
                 <p className="me-sm-auto me-3 mb-sm-0 mb-3">
                   last month ₹ 563,443
